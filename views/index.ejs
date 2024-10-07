@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .chat{
+      background-color:aliceblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>All Chats</h1>
+  <%for(let chat of allChats){%>
+    <div class="chat">
+      <h3>Id_: <%=chat._id%></h3>
+      <p>from: <%=chat.from%></p>
+      <p>to: <%=chat.to%></p>
+      <p>mesg: <%=chat.mesg%></p>
+      <p>Created_At: <%=chat.created_at.toString().split(' ').slice(0, 4).join(" ")%></p>
+      <a href="/chats/<%=chat._id%>/edit">edit mesg</a>
+      <button onclick="deleteChat(`<%=chat._id%>`)">Delete</button>
+      <!-- <form action="/chats/<%=chat._id%>?_method=DELETE" method="POST">
+        <button>Delete</button>
+      </form> -->
+    </div>
+  <%}%>
+  <a href="/chats/new">Create new chat</a>
+  <script src="/JS/app.js"></script>
+</body>
+</html>
