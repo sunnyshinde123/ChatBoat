@@ -13,7 +13,7 @@ async function deleteChat(id){
 
     let res=await response.json();
     console.log(res);
-    // window.location.href='/chats';
+    window.location.href='/chats';
   }catch(err){
     console.log(err);
   }
