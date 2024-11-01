@@ -25,6 +25,7 @@ services:
   chatboat:
     build:
       context: .
+      dockerfile: ./Docker-multi-stage
     container_name: chatMongo
     environment:
       DB_HOST: mongodb-container

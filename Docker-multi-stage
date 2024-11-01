@@ -1,0 +1,29 @@
+# -------------------Stage-1(Builder)--------
+FROM node:18 As builder
+
+# Working Directory
+WORKDIR /app
+
+# Copy package.json & package-lock.json
+COPY package*.json /app/
+
+# Install Dependencies and Libraries
+RUN npm install
+
+# ------------------Stage-2(Builder)----------
+FROM node:18-slim
+
+# Working Dir
+WORKDIR /app
+
+# Copy Stage-1 Libraries and dependencies in stage 2
+COPY --from=builder /app/node_modules ./node_modules
+
+# Copy the Source Code
+COPY . .
+
+# Expose the port
+EXPOSE 7080
+
+# start the server
+CMD ["node","index.js"]
