@@ -58,8 +58,3 @@ app.delete("/chats/:id", (req, res)=>{
   Chat.findByIdAndDelete(id, {new:true}).then(res=>console.log(res)).catch(err=>console.log(err));
   res.redirect("/chats");
 })
-
-
-app.get("*", (req, res)=>{
-  res.send("404: Page not found");
-})
